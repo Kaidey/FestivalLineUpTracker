@@ -146,6 +146,9 @@ dmypy.json
 # profiling data
 .prof
 
+# vscode
+.vs
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 
