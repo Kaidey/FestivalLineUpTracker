@@ -23,7 +23,7 @@ for action in dayActionTags:
 
 confirmationsByDay = dict()
 
-stageRegex = re.compile(r'^\s*[a-z\s?A-Z]+', re.IGNORECASE)
+stageRegex = re.compile(r'^\s*[a-zA-Z]+', re.IGNORECASE)
 
 for dayUrl in dayURLs:
 
@@ -46,10 +46,10 @@ for dayUrl in dayURLs:
 
         artistName = div.findNext('h4').contents[0]
 
-        for string in div.findNext('p').contents:
-            if isinstance(string, NavigableString) and re.match(stageRegex, string) is not None:
-                stageName = string
-                break
+        for content in div.findNext('p').contents:
+            if isinstance(content, NavigableString) and re.match(stageRegex, content.string) is not None:
+                print(content.string)
+                stageName = content.string
 
         if stageName not in confirmationsByStage:
             confirmationsByStage[stageName] = list([artistName])
